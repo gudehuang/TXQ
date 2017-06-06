@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:id="@+id/projectIcon"
+            android:layout_width="120dp"
+            android:layout_height="80dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/login_logo" />
+
+        <LinearLayout
+            android:id="@+id/projectinfo_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_margin="5dp"
+            android:layout_toRightOf="@id/projectIcon"
+            android:orientation="horizontal">
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <TextView
+
+        android:id="@+id/projectNameType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="秀我家墙纸（天使）" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/projectState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="预热中" />
+</LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/projectIntroduceBrief"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/projectinfo_layout"
+            android:layout_margin="5dp"
+            android:layout_toRightOf="@id/projectIcon"
+            android:text="让卖墙纸防守对方是否防守对方说发生的发送发生的f" />
+
+        <LinearLayout
+            android:id="@+id/industryNameList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/projectIntroduceBrief"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/projectIcon"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="移动互联网" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/amount_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/projectIcon"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/financeAmount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="融资金额:
+                100" />
+
+            <TextView
+                android:id="@+id/transfereQuity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="出让股权" />
+
+            <TextView
+                android:id="@+id/intentionAmount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="意向金额" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/amount_layout"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:id="@+id/projectTeamIntroduce"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:text="团队：防守对方说对方发生的 " />
+
+            <TextView
+                android:id="@+id/followNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="1 关注" />
+
+            <TextView
+                android:id="@+id/readNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="100阅读" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</layout>
