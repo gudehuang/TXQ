@@ -3,6 +3,8 @@ package com.hzg.txq;
 import android.app.Application;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.util.LruCache;
+import android.widget.ImageView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
@@ -23,21 +25,15 @@ public class MyApp extends Application {
         super.onCreate();
         mQuue = Volley.newRequestQueue(this);
         mSharePreference = getSharedPreferences(MyConfig.AppName, MODE_PRIVATE);
-        mImageLoader=new ImageLoader(mQuue, new ImageLoader.ImageCache() {
-            @Override
-            public Bitmap getBitmap(String url) {
-                return null;
-            }
-
-            @Override
-            public void putBitmap(String url, Bitmap bitmap) {
-
-            }
-        });
+        mImageLoader=new ImageLoader(mQuue, new BitmapCache());
 
 
     }
-
+   public  void  bindImage(String url, ImageView imageView)
+   {
+       ImageLoader.ImageListener listener=mImageLoader.getImageListener(imageView,R.drawable.loading,R.drawable.loading_error);
+       mImageLoader.get(url,listener);
+   }
     public RequestQueue getRequestQueue() {
         return mQuue;
     }

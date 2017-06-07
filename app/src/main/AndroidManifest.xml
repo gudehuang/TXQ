@@ -28,6 +28,7 @@
         <activity android:name=".ProjectListAct" android:label="项目列表">
 
         </activity>
+        <activity android:name=".ProjectDetailAct" android:label="项目详情"/>
     </application>
 
 </manifest>

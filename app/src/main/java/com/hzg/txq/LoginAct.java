@@ -85,7 +85,7 @@ public class LoginAct extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                if (error.networkResponse != null)
+                if (error.networkResponse != null) {
                     if (error.networkResponse.statusCode == 400) {
                         setErrorDefalut();
                         loginBinding.TILPassword.setError("密码错误");
@@ -97,8 +97,9 @@ public class LoginAct extends AppCompatActivity {
 
 
                     }
-                System.out.println(error.networkResponse.statusCode);
-                System.out.println(new String(error.networkResponse.data));
+                    System.out.println(error.networkResponse.statusCode);
+                    System.out.println(new String(error.networkResponse.data));
+                }
                 dialog.hide();
             }
         });
@@ -128,5 +129,14 @@ public class LoginAct extends AppCompatActivity {
         loginBinding.TILAccount.setError(null);
         loginBinding.TILPassword.setError(null);
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (dialog!=null) {
+            dialog.dismiss();
+            dialog=null;
+        }
     }
 }

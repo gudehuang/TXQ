@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+<data>
+    <import type="com.hzg.txq.StringUtils"/>
+    <variable
+        name="Project"
+        type="com.hzg.txq.ProjectDetailBean.Project"/>
+    <variable
+        name="Presenter"
+        type="com.hzg.txq.ProjectDetailPresenter"/>
+</data>
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <LinearLayout
+           android:orientation="vertical" android:layout_width="match_parent"
+           android:layout_height="match_parent">
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="120dp">
+               <ImageView
+                   android:id="@id/projectIcon"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:src="@drawable/login_logo"
+                   android:layout_alignParentTop="true"
+                   android:layout_alignParentLeft="true"
+                   android:layout_alignParentStart="true" />
+               <LinearLayout
+                   android:layout_alignParentBottom="true"
+                   android:orientation="horizontal"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content">
+                   <TextView
+                       android:layout_marginLeft="8dp"
+                       android:id="@+id/createTime"
+                       android:text="@{Presenter.getDate()}"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content" />
+                   <View
+                       android:layout_width="0dp"
+                       android:layout_height="0dp"
+
+                       android:layout_weight="1"/>
+                   <TextView
+                       android:layout_marginRight="8dp"
+                       android:id="@+id/provinceCityName"
+                       android:text="@{Presenter.getProvinceAndCity()}"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content" />
+               </LinearLayout>
+           </RelativeLayout>
+           <LinearLayout
+               android:orientation="vertical"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content">
+               <TextView
+                   android:id="@id/intentionAmount"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@{Presenter.getIntentionAmount()}"/>
+               <ProgressBar
+                   android:layout_marginLeft="20dp"
+                   android:layout_marginRight="20dp"
+                   android:id="@+id/amount_progress"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:progress="@{Presenter.getProgess()}"
+                   style="?android:attr/progressBarStyleHorizontal"
+                   android:progressDrawable="@drawable/barcolor"/>
+               <TextView
+                   android:layout_gravity="right"
+                   android:id="@id/financeAmount"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@{Presenter.getFinanceAmount()}"/>
+           </LinearLayout>
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content">
+               <TextView
+                   android:gravity="center"
+                   android:id="@+id/transferEquity"
+                   android:layout_width="0dp"
+                   android:layout_weight="1"
+                   android:layout_height="wrap_content"
+                   android:text="@{Presenter.getTransferEquity}"/>
+               <TextView
+                   android:gravity="center"
+                   android:id="@id/followNum"
+                   android:layout_width="0dp"
+                   android:layout_weight="1"
+                   android:layout_height="wrap_content"
+                   android:text="@{Presenter.getFollowNum()}"/>
+               <TextView
+                   android:gravity="center"
+                   android:id="@+id/investNum"
+                   android:layout_width="0dp"
+                   android:layout_weight="1"
+                   android:layout_height="wrap_content"
+                   android:text="@{Presenter.getInvestNum()}"/>
+               <TextView
+                   android:gravity="center"
+                   android:id="@+id/interviewNum"
+                   android:layout_width="0dp"
+                   android:layout_weight="1"
+                   android:layout_height="wrap_content"
+                   android:text="@{Presenter.getInterviewNum()}"/>
+           </LinearLayout>
+           <TextView
+               android:gravity="center"
+               android:id="@+id/businessPlanUrl"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="查看商业企划书"/>
+           <android.support.design.widget.TabLayout
+               android:id="@+id/tablayout"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content">
+               <android.support.design.widget.TabItem
+                   android:id="@+id/base_tab"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="基本信息"/>
+               <android.support.design.widget.TabItem
+                   android:id="@+id/touzi_tab"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="投资信息"/>
+           </android.support.design.widget.TabLayout>
+           <android.support.v4.view.ViewPager
+               android:id="@+id/viewpager"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content">
+
+           </android.support.v4.view.ViewPager>
+
+       </LinearLayout>
+   </ScrollView>
+
+</layout>

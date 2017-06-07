@@ -2,6 +2,7 @@ package com.hzg.txq;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -22,12 +23,13 @@ import org.json.JSONObject;
 import java.util.List;
 
 import static com.android.volley.Request.Method.GET;
+import static com.hzg.txq.MyConfig.PROJECT_UUID;
 
 /**
  * Created by hzg on 2017/6/6.
  */
 
-public class ProjectListAct extends AppCompatActivity {
+public class ProjectListAct extends AppCompatActivity implements ProjectListAdpter.onClickListener {
     private ActivityProjectlistBinding mDataBind;
     RecyclerView.Adapter mAdapter;
     List<ProjectListBean.ProjectInfo> mData;
@@ -66,7 +68,8 @@ public class ProjectListAct extends AppCompatActivity {
                   if(projectListBean.isSuccess())
                   {
                       mData=projectListBean.getProject().getProjectList();
-                      mAdapter=new ProjectListAdpter(mData);
+                      mAdapter=new ProjectListAdpter(mData,ProjectListAct.this,ProjectListAct.this);
+
                       mDataBind.recyclerView.setAdapter(mAdapter);
                       mDataBind.recyclerView.setLayoutManager(new LinearLayoutManager(ProjectListAct.this));
                   }
@@ -86,5 +89,21 @@ public class ProjectListAct extends AppCompatActivity {
             }
         });
         mQueue.add(request);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (dialog!=null) {
+            dialog.dismiss();
+            dialog=null;
+        }
+    }
+
+    @Override
+    public void onClick(int position) {
+        Intent intent=new Intent(this,ProjectDetailAct.class);
+        intent.putExtra(PROJECT_UUID,mData.get(position).getProjectUuid());
+        startActivity(intent);
     }
 }
