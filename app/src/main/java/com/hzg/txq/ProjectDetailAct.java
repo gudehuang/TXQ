@@ -67,7 +67,9 @@ public class ProjectDetailAct extends BaseAct {
 
     private void bindData(ProjectDetailBean.Project project) {
         mDataBind.setProject(project);
-        mDataBind.setPresenter(new ProjectDetailPresenter(project));
+        ProjectDetailPresenter presenter=  new ProjectDetailPresenter(project);
+        mDataBind.setPresenter(presenter);
+        mDataBind.createTime.setText(presenter.getDate());
         mDataBind.tablayout.setupWithViewPager(mDataBind.viewpager);
         mDataBind.viewpager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
