@@ -1,4 +1,4 @@
-package com.hzg.txq;
+package com.hzg.txq.adapter;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -11,17 +11,30 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import java.util.List;
 
 /**
  * Created by hzg on 2017/5/19.
+ * 自定义 RecyclerAdapter
  */
 
 public abstract class QuickRecyclerAdapter<T, T1 extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<T1> {
+   //数据
     List<T> mDatas;
 
+
+
     public QuickRecyclerAdapter(List<T> mDatas) {
+        this.mDatas = mDatas;
+    }
+
+    public List<T> getDatas() {
+        return mDatas;
+    }
+
+    public void setDatas(List<T> mDatas) {
         this.mDatas = mDatas;
     }
 
@@ -33,7 +46,7 @@ public abstract class QuickRecyclerAdapter<T, T1 extends RecyclerView.ViewHolder
 
     @Override
     public void onBindViewHolder(T1 holder, int position) {
-        convert(holder, position, mDatas.get(position));
+        convert(holder, position, mDatas.size()==position?null:mDatas.get(position));
     }
 
     protected abstract void convert(T1 holder, int position, T bean);
@@ -49,8 +62,13 @@ public abstract class QuickRecyclerAdapter<T, T1 extends RecyclerView.ViewHolder
     }
 
 
+
     public static class VH extends RecyclerView.ViewHolder {
         ViewDataBinding mBinding;
+
+        public ViewDataBinding getBinding() {
+            return mBinding;
+        }
 
         public VH(View itemView) {
             super(itemView);

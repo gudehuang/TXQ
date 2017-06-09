@@ -1,6 +1,6 @@
 package com.hzg.txq.test;
 
-import com.hzg.txq.ProjectDetailBean;
+import com.hzg.txq.bean.ProjectDetailBean;
 
 import org.junit.Before;
 import org.junit.Test;

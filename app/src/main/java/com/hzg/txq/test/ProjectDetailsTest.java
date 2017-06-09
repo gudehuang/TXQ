@@ -1,7 +1,7 @@
 package com.hzg.txq.test;
 
 import com.google.gson.Gson;
-import com.hzg.txq.ProjectDetailBean;
+import com.hzg.txq.bean.ProjectDetailBean;
 
 /**
  * Created by hzg on 2017/6/7.

@@ -1,10 +1,8 @@
-package com.hzg.txq;
+package com.hzg.txq.app;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.util.Log;
-import android.util.LruCache;
 import android.widget.ImageView;
 
 import com.android.volley.RequestQueue;
@@ -14,15 +12,9 @@ import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
-import com.baidu.mapapi.CoordType;
-import com.baidu.mapapi.SDKInitializer;
-import com.baidu.mapapi.model.LatLng;
-import com.baidu.mapapi.search.core.SearchResult;
-import com.baidu.mapapi.search.geocode.GeoCodeResult;
-import com.baidu.mapapi.search.geocode.GeoCoder;
-import com.baidu.mapapi.search.geocode.OnGetGeoCoderResultListener;
-import com.baidu.mapapi.search.geocode.ReverseGeoCodeOption;
 import com.baidu.mapapi.search.geocode.ReverseGeoCodeResult;
+import com.hzg.txq.BitmapCache;
+import com.hzg.txq.R;
 
 /**
  * Created by hzg on 2017/6/6.
@@ -34,11 +26,7 @@ public class MyApp extends Application {
     SharedPreferences mSharePreference;
     LocationClient mLocationClient;
     MyBDLocationListener mBDLocationListener;
-    public  interface  ClientLocationListenr
-    {
-        void handleLocation(BDLocation location);
-        void getAddress(ReverseGeoCodeResult result);
-    }
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -56,8 +44,9 @@ public class MyApp extends Application {
         option.setCoorType("bd09ll");
         //是否获取地址信息
         option.setIsNeedAddress(true);
-        mLocationClient.setLocOption(option);
+         //位置语义化描述
         option.setIsNeedLocationDescribe(true);
+        mLocationClient.setLocOption(option);
         mBDLocationListener=new MyBDLocationListener();
         mLocationClient.registerLocationListener(mBDLocationListener);
     }
@@ -71,15 +60,37 @@ public class MyApp extends Application {
     }
    public  void  bindImage(String url, ImageView imageView)
    {
-       ImageLoader.ImageListener listener=mImageLoader.getImageListener(imageView,R.drawable.loading,R.drawable.loading_error);
+       ImageLoader.ImageListener listener=mImageLoader.getImageListener(imageView, R.drawable.loading,R.drawable.loading_error);
+
        mImageLoader.get(url,listener);
+
    }
+
+    public LocationClient getLocationClient() {
+        return mLocationClient;
+    }
+    public LocationClient getLocationClient(Context context) {
+        LocationClientOption option=new LocationClientOption();
+        option.setLocationMode(LocationClientOption.LocationMode.Battery_Saving);
+        option.setCoorType("bd09ll");
+        //是否获取地址信息
+        option.setIsNeedAddress(true);
+        //位置语义化描述
+        option.setIsNeedLocationDescribe(true);
+        LocationClient client=new LocationClient(this,option);
+        return client;
+    }
+
     public RequestQueue getRequestQueue() {
         return mQuue;
     }
 
     public SharedPreferences getSharePre() {
         return mSharePreference;
+    }
+
+    public ImageLoader getImageLoader() {
+        return mImageLoader;
     }
 
     public void putStingInSharePre(String key, String values) {
@@ -113,5 +124,10 @@ public class MyApp extends Application {
         public void onConnectHotSpotMessage(String s, int i) {
 
         }
+    }
+    public  interface  ClientLocationListenr
+    {
+        void handleLocation(BDLocation location);
+        void getAddress(ReverseGeoCodeResult result);
     }
 }

@@ -1,4 +1,4 @@
-package com.hzg.txq;
+package com.hzg.txq.request;
 
 import android.util.Log;
 
@@ -33,7 +33,7 @@ public class FastJsonRequest extends Request<JSONObject> {
 
 	protected static final String PROTOCOL_CHARSET = "utf-8";
 
-	// private Listener<JSONObject> mListener;
+
 	public interface OnHeadHandlerListener {
 		void onHeadHandler(Map<String, String> map, String encode);
 	}

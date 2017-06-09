@@ -5,18 +5,21 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v7.app.AppCompatActivity;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.google.gson.Gson;
+import com.hzg.txq.app.MyConfig;
+import com.hzg.txq.bean.ProjectDetailBean;
 import com.hzg.txq.databinding.ActivityProjectdetailsBinding;
+import com.hzg.txq.fragment.BaseInfoFragment;
+import com.hzg.txq.fragment.MoreInfoFragment;
+import com.hzg.txq.presenter.ProjectDetailPresenter;
+import com.hzg.txq.request.FastJsonRequest;
 import com.hzg.txq.test.ProjectDetailsTest;
 
 import org.json.JSONObject;
-
-import java.util.UUID;
 
 /**
  * Created by hzg on 2017/6/7.
@@ -37,10 +40,10 @@ public class ProjectDetailAct extends BaseAct {
 
         Uuid = getIntent().getStringExtra(MyConfig.PROJECT_UUID);
         //模拟数据
-        bindData(new ProjectDetailsTest().jsonToProject());
+        //bindData(new ProjectDetailsTest().jsonToProject());
         dialog.hide();
         //从网络获取数据
-        //initData();
+        initData();
     }
 
     private void initData() {
@@ -68,7 +71,10 @@ public class ProjectDetailAct extends BaseAct {
     private void bindData(ProjectDetailBean.Project project) {
         mDataBind.setProject(project);
         ProjectDetailPresenter presenter=  new ProjectDetailPresenter(project);
+        System.out.println(project.getIntentionAmount());
         mDataBind.setPresenter(presenter);
+        mDataBind.amountProgress.setMax((int) project.getFinanceAmount());
+        mDataBind.amountProgress.setProgress((int) project.getIntentionAmount());
         mDataBind.createTime.setText(presenter.getDate());
         mDataBind.tablayout.setupWithViewPager(mDataBind.viewpager);
         mDataBind.viewpager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {

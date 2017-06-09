@@ -1,4 +1,4 @@
-package com.hzg.txq;
+package com.hzg.txq.bean;
 
 import java.io.Serializable;
 import java.util.List;
@@ -47,7 +47,7 @@ public class ProjectListBean {
 		//所属行业类别列表
 		private  List<String> industryNameList;
 		//融资总额
-		private  int financeAmount;
+		private  double financeAmount;
 		//浏览数
 		private  int readNum;
 		//项目状态
@@ -55,13 +55,13 @@ public class ProjectListBean {
 		//项目图片
 		private  String projectIcon;
 		//出让股权
-		private  int transfereQuity;
+		private double transferEquity;
 		//项目uuid
 		private  String projectUuid;
 		//项目名称
 		private  String projectName;
 		//意向金额
-		private  int intentionAmount;
+		private  double intentionAmount;
 		//项目团队
 		private  String projectTeamIntroduce;
 		public int getFollowNum() {
@@ -80,7 +80,7 @@ public class ProjectListBean {
 			return industryNameList;
 		}
 
-		public int getFinanceAmount() {
+		public double getFinanceAmount() {
 			return financeAmount;
 		}
 
@@ -96,8 +96,8 @@ public class ProjectListBean {
 			return projectIcon;
 		}
 
-		public int getTransfereQuity() {
-			return transfereQuity;
+		public double getTransferEquity() {
+			return transferEquity;
 		}
 
 		public String getProjectUuid() {
@@ -108,7 +108,7 @@ public class ProjectListBean {
 			return projectName;
 		}
 
-		public int getIntentionAmount() {
+		public double getIntentionAmount() {
 			return intentionAmount;
 		}
 
@@ -125,7 +125,16 @@ public class ProjectListBean {
 	   //项目总数
 	    private  int totalElements;
 	    //项目总页数
-	    private  int totalPages;
+
+		public int getTotalElements() {
+			return totalElements;
+		}
+
+		public int getTotalPages() {
+			return totalPages;
+		}
+
+		private  int totalPages;
 	     private int getTotalelements() {
 	         return totalElements;
 	     }

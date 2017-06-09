@@ -1,9 +1,12 @@
-package com.hzg.txq;
+package com.hzg.txq.presenter;
 
 import android.graphics.Color;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
+
+import com.hzg.txq.bean.ProjectDetailBean;
+import com.hzg.txq.utils.StringUtils;
 
 /**
  * Created by hzg on 2017/6/7.
@@ -19,7 +22,7 @@ public class ProjectDetailPresenter {
     public  CharSequence getDate()
     {
         SpannableStringBuilder ssb=new SpannableStringBuilder("上线时间：");
-        ForegroundColorSpan span=new ForegroundColorSpan(Color.rgb(0x00,0xbc,0xd4));
+        ForegroundColorSpan span=new ForegroundColorSpan(Color.BLUE);
         ssb.setSpan(span,ssb.length(),ssb.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
         ssb.append(StringUtils.dateToString(mProject.getCreateTime()));
         return  ssb;

@@ -12,7 +12,10 @@ import android.view.View;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.hzg.txq.app.MyConfig;
 import com.hzg.txq.databinding.ActivityLoginBinding;
+import com.hzg.txq.request.FastJsonRequest;
+import com.hzg.txq.utils.Utils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -41,7 +44,7 @@ public class LoginAct extends AppCompatActivity {
         loginBinding.setAccount(account);
         loginBinding.setPassword(password);
 
-        mQueue =Utils.getMyapp(this).getRequestQueue();
+        mQueue = Utils.getMyapp(this).getRequestQueue();
         loginBinding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

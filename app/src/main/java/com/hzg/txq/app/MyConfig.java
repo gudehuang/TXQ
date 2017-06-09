@@ -1,4 +1,4 @@
-package com.hzg.txq;
+package com.hzg.txq.app;
 
 /**
  * Created by hzg on 2017/6/6.

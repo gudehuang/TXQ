@@ -1,4 +1,4 @@
-package com.hzg.txq;
+package com.hzg.txq.utils;
 
 import android.graphics.Color;
 import android.text.SpannableStringBuilder;

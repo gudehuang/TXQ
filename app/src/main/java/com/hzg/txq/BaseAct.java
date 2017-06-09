@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.android.volley.RequestQueue;
+import com.hzg.txq.utils.Utils;
 
 /**
  * Created by hzg on 2017/6/7.
@@ -20,9 +21,9 @@ public class BaseAct extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setHomeButtonEnabled(true);
+
         dialog= ProgressDialog.show(this,"","",false,false);
-        mQueue=Utils.getMyapp(this).getRequestQueue();
+        mQueue= Utils.getMyapp(this).getRequestQueue();
         mSharePre=Utils.getMyapp(this).getSharePre();
     }
 

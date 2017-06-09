@@ -1,4 +1,4 @@
-package com.hzg.txq;
+package com.hzg.txq.bean;
 
 import java.io.Serializable;
 import java.util.List;
@@ -17,10 +17,10 @@ public class ProjectDetailBean {
 	}
 
 	public static class VcpeProject {
-		public int projectValue;//项目估值
-		public int financeAmount;//融资金额
-		public int transferEquity;//出让股权
-		public int intentionAmount;//意向金额
+		public double projectValue;//项目估值
+		public double financeAmount;//融资金额
+		public double transferEquity;//出让股权
+		public double intentionAmount;//意向金额
 
 		public String downstreamCustomer;//下游客户
 		public String projectRisk;//项目风险提示
@@ -78,7 +78,7 @@ public class ProjectDetailBean {
 			return milestone;
 		}
 
-		public int getFinanceAmount() {
+		public double getFinanceAmount() {
 			return financeAmount;
 		}
 
@@ -102,15 +102,15 @@ public class ProjectDetailBean {
 			return marketStrategy;
 		}
 
-		public int getProjectValue() {
+		public double getProjectValue() {
 			return projectValue;
 		}
 
-		public int getTransferEquity() {
+		public double getTransferEquity() {
 			return transferEquity;
 		}
 
-		public int getIntentionAmount() {
+		public double getIntentionAmount() {
 			return intentionAmount;
 		}
 
@@ -118,7 +118,7 @@ public class ProjectDetailBean {
 	}
 	public static class AngelProject {
 
-		public int financeAmount;  //融资金额
+		public double financeAmount;  //融资金额
 		public String competitorAnalysis;//竞争对手分析
 		public String targetCustomer; //目标客户
 		public String marketAnalysis; //市场分析
@@ -126,12 +126,12 @@ public class ProjectDetailBean {
 		public String marketStrategy;//推广策略
 		public String mainBusiness;//主营业务
 		public List<ShareholderList> shareholderList; //股东列表
-		public int projectValue; //估值
+		public double projectValue; //估值
 
 		public String developPlan;//发展计划
-		public int transferEquity;//出让股权
-		public int intentionAmount;//意向金额
-		public int getFinanceAmount() {
+		public double transferEquity;//出让股权
+		public double intentionAmount;//意向金额
+		public double getFinanceAmount() {
 			return financeAmount;
 		}
 
@@ -159,7 +159,7 @@ public class ProjectDetailBean {
 			return shareholderList;
 		}
 
-		public int getProjectValue() {
+		public double getProjectValue() {
 			return projectValue;
 		}
 
@@ -167,11 +167,11 @@ public class ProjectDetailBean {
 			return developPlan;
 		}
 
-		public int getTransferEquity() {
+		public double getTransferEquity() {
 			return transferEquity;
 		}
 
-		public int getIntentionAmount() {
+		public double getIntentionAmount() {
 			return intentionAmount;
 		}
 
@@ -269,9 +269,9 @@ public class ProjectDetailBean {
 		public String tlsGroupId;//腾讯云群组id
 		public String businessPlanUrl;//商业计划书
 
-		public int financeAmount;//融资金额
-		public int intentionAmount;//意向金额
-		public int transferEquity;//出让股权
+		public double financeAmount;//融资金额
+		public double intentionAmount;//意向金额
+		public double transferEquity;//出让股权
 		public int interviewNum;//约谈人数
 		public int followNum;//关注人数
 		public int investNum;//投资人数
@@ -336,7 +336,7 @@ public class ProjectDetailBean {
 		public void setFinanceAmount(int financeAmount) {
 			this.financeAmount = financeAmount;
 		}
-		public int getFinanceAmount() {
+		public double getFinanceAmount() {
 			return financeAmount;
 		}
 
@@ -434,7 +434,7 @@ public class ProjectDetailBean {
 		public void setTransferEquity(int transferEquity) {
 			this.transferEquity = transferEquity;
 		}
-		public int getTransferEquity() {
+		public double getTransferEquity() {
 			return transferEquity;
 		}
 
@@ -455,7 +455,7 @@ public class ProjectDetailBean {
 		public void setIntentionAmount(int intentionAmount) {
 			this.intentionAmount = intentionAmount;
 		}
-		public int getIntentionAmount() {
+		public double getIntentionAmount() {
 			return intentionAmount;
 		}
 
